@@ -10,10 +10,32 @@
 #include <iomanip>
 
 #include "raffer/regex/call/call_std.hpp"
+#include "raffer/type/type.hpp"
 #include "../../cpp11/include/raffer/system/system.hpp"
 
-//#include <fcntl.h>
-//#include <io.h>
+
+namespace raffer // interface
+{
+
+template <typename Char>
+[[nodiscard]] auto read_file(std::string const & filename);
+
+} // namespace raffer
+
+namespace raffer // implementation
+{
+
+template <typename Char>
+auto read_file(std::string const & filename)
+{
+	auto ifs = std::basic_ifstream<Char>{filename};
+	return std::basic_string<Char>{
+		(std::istreambuf_iterator<Char>(ifs)),
+		std::istreambuf_iterator<Char>()};
+}
+
+} // namespace raffer
+	
 
 
 using Char = wchar_t;
@@ -95,18 +117,9 @@ auto main() -> int
 	raffer::function_body_ptr<Char> std_func_run =
 		[&func](raffer::basic_smatch<Char> const & arg) -> std::basic_string<Char>
 		{
-			/*FILE * file = _wfopen(arg.str(1).c_str(), L"r");
-			_setmode(_fileno(file), _O_U8TEXT);
-			fseek(file, 0, SEEK_END);
-			auto chars = ftell(file);
-			fseek(file, 0, SEEK_SET);
-			auto script = (Char*)calloc(chars, sizeof(Char));
-			fread(script, sizeof(Char), chars, file);
-			fclose(file);
-	
-			return raffer::call<Char>(script, func, raffer::basic_smatch<Char>{});*/
-			
-			return raffer::to_basic_string<Char>("std_func_run");
+			return raffer::call<Char>(
+				raffer::read_file<Char>(raffer::to_string(arg.str(1))),
+				func, raffer::basic_smatch<Char>{});
 		};
 	
 	raffer::function_body_ptr<Char> std_basic_statement =
@@ -119,7 +132,7 @@ auto main() -> int
 	raffer::function_body_ptr<Char> std_basic_func_printall =
 		[&func](raffer::basic_smatch<Char> const & arg) -> std::basic_string<Char>
 		{
-			for (unsigned i = 0; i < func.size(); ++ i)
+			for (unsigned i = 0; i < func.size(); ++i)
 				for (const auto& [name, body] : func.at(i))
 				{
 					raffer::basic_cout<Char> << std::right << std::setw(3) << i << " | " << std::left << std::setw(50) << name << " | ";

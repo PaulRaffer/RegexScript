@@ -4,6 +4,8 @@
 // (See accompanying file LICENSE_1_0.txt or copy at
 // https://www.boost.org/LICENSE_1_0.txt)
 
+TYPE hexDigit IS [\dABCDEF]
+TYPE HexByte IS (hexDigit{2})
 TYPE sign IS [-\+]
 TYPE operator IS [\+-\*/]
 TYPE number IS \d*\.?\d+
@@ -11,7 +13,7 @@ TYPE number IS \d*\.?\d+
 CONST pi|π IS std::math::const::pi
 CONST e IS std::math::const::e
 
-PRIORITY  7 (number)_(leftBracket|[[:alpha:]]) IS $1*$2
+//PRIORITY  7 (number)_(leftBracket|[[:alpha:]]) IS $1*$2
 
 PRIORITY  8 (sign)_(sign) IS std::math::func::rmsign
 PRIORITY  8 \(_(sign?number)_\) IS std::basic::func::arg1

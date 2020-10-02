@@ -7,8 +7,8 @@
 PRIORITY  0 anyChar IS (.|\n)
 PRIORITY  1 //.*|/\*((?!\*/)(anyChar))*\*/ IS std::basic::func::ignore
 
-
-PRIORITY  1 _ IS \s*
+PRIORITY  1 __ IS \s+
+PRIORITY  2 _ IS \s*
 
 PRIORITY  2 TYPE IS PRIORITY3
 PRIORITY  2 CONST IS PRIORITY7

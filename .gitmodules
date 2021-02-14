@@ -1,0 +1,12 @@
+[submodule "include/raffer/regex"]
+	path = include/raffer/regex
+	url = https://github.com/PaulRaffer/raffer_cpplib-regex
+	branch = cpp17
+[submodule "include/raffer/string"]
+	path = include/raffer/string
+	url = https://github.com/PaulRaffer/raffer_cpplib-string
+	branch = cpp17
+[submodule "include/raffer/system"]
+	path = include/raffer/system
+	url = https://github.com/PaulRaffer/raffer_cpplib-system
+	branch = cpp11

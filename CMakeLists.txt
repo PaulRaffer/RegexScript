@@ -19,6 +19,6 @@ include_directories(
 )
 
 add_executable(regs "src/main.cpp"
-	"include/raffer/regex/call/call.cpp"
-	"include/raffer/string/string.cpp"
-	"include/raffer/system/system.cpp")
+	"./include/raffer/regex/call/call.cpp"
+	"./include/raffer/string/string.cpp"
+	"./include/raffer/system/system.cpp")

@@ -86,9 +86,9 @@ auto std_func = raffer::unordered_functions<Char>
 
 auto main() -> int
 {
-	raffer::enable_unicode_stdio();
+	::gpl::enable_unicode_stdio();
 	
-	auto func = ::gpl::ordered_functions<Char>(40);
+	auto func = raffer::ordered_functions<Char>(40);
 	
 	raffer::function_body_ptr<Char> std_func_func =
 		[&func](raffer::basic_smatch<Char> const & arg) -> std::basic_string<Char>

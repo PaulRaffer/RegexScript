@@ -10,8 +10,8 @@ TYPE sign IS [-\+]
 TYPE operator IS [\+-\*/]
 TYPE number IS \d*\.?\d+
 
-CONST pi|π IS std::math::const::pi
 CONST e IS std::math::const::e
+CONST pi IS std::math::const::pi
 
 //PRIORITY  7 (number)_(leftBracket|[[:alpha:]]) IS $1*$2
 
@@ -19,8 +19,8 @@ PRIORITY  8 (sign)_(sign) IS std::math::func::rmsign
 PRIORITY  8 \(_(sign?number)_\) IS std::basic::func::arg1
 PRIORITY  8 \[_(sign?number)_\] IS std::basic::func::arg1
 
-PRIORITY  9 ⌊_(sign?number)_⌋ IS std::math::func::floor
-PRIORITY  9 ⌈_(sign?number)_⌉ IS std::math::func::ceil
+PRIORITY  9 floor_(sign?number) IS std::math::func::floor
+PRIORITY  9 ceil_(sign?number) IS std::math::func::ceil
 
 PRIORITY  9 \|sign?(number)\| IS $1
 
@@ -34,27 +34,3 @@ PRIORITY 14 (number)_/_(sign?number) IS std::math::func::div
 PRIORITY 14 (number)_mod_(sign?number) IS std::math::func::mod
 PRIORITY 15 (sign?number)_\+_(number) IS std::math::func::add
 PRIORITY 15 (sign?number)_-_(number) IS std::math::func::sub
-
-
-PRIORITY 25 ² IS ^2
-PRIORITY 25 ³ IS ^3
-
-CONST ¼ IS (1/4)
-CONST ½ IS (1/2)
-CONST ¾ IS (3/4)
-CONST ⅐ IS (1/7)
-CONST ⅑ IS (1/9)
-CONST ⅒ IS (1/10)
-CONST ⅓ IS (1/3)
-CONST ⅔ IS (2/3)
-CONST ⅕ IS (1/5)
-CONST ⅖ IS (2/5)
-CONST ⅗ IS (3/5)
-CONST ⅘ IS (4/5)
-CONST ⅙ IS (1/6)
-CONST ⅚ IS (5/6)
-CONST ⅛ IS (1/8)
-CONST ⅜ IS (3/8)
-CONST ⅝ IS (5/8)
-CONST ⅞ IS (7/8)
-CONST ↉ IS (0/3)

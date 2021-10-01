@@ -84,7 +84,7 @@ auto std_func = raffer::unordered_functions<Char>
 	{ raffer::to_basic_string<Char>("std::math::func::sin"), raffer::std_math_func_sin<Char> },
 };
 
-auto main() -> int
+auto main(int const argc, char const * const * const argv) -> int
 {
 	::gpl::enable_unicode_stdio();
 	
@@ -157,12 +157,11 @@ auto main() -> int
 	func.at(5).insert({ raffer::to_basic_string<Char>("run\\s*\"([^\"]*)\""), std_func_run });
 	func.at(25).insert({ raffer::to_basic_string<Char>("print\\s*all"), std_basic_func_printall });
 	
-	auto stdlib_path = raffer::to_basic_string<Char>("std");
-	
-	#ifdef DEBUG
-		raffer::basic_cout<Char> << "<<< " <<
-	#endif // DEBUG
-	raffer::call<Char>(raffer::to_basic_string<Char>(R"(run ")") + stdlib_path + raffer::to_basic_string<Char>(R"(/core.regs")"), func, raffer::basic_smatch<Char>{});
+	for (auto i = 1; i < argc; ++i)
+		#ifdef DEBUG
+			raffer::basic_cout<Char> << "<<< " <<
+		#endif // DEBUG
+		raffer::call<Char>(raffer::to_basic_string<Char>(R"(run ")") + raffer::to_basic_string<Char>(argv[i]) + raffer::to_basic_string<Char>(R"(")"), func, raffer::basic_smatch<Char>{});
 	
 	#ifdef DEBUG
 		std_basic_func_printall(raffer::basic_smatch{});

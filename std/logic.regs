@@ -10,13 +10,13 @@ PRIORITY  7 true IS std::logic::const::true
 PRIORITY  7 false IS std::logic::const::false
 
 PRIORITY 19 (?:¬|not)_(boolean) IS std::logic::func::not
-PRIORITY 20 (boolean)_(?:∧|and)_(boolean) IS std::logic::func::and
-PRIORITY 20 (boolean)_(?:∨|or)_(boolean) IS std::logic::func::or
-PRIORITY 20 (boolean)_(?:⊼|nand)_(boolean) IS std::logic::func::nand
-PRIORITY 20 (boolean)_(?:⊽|nor)_(boolean) IS std::logic::func::nor
-PRIORITY 21 (boolean)_(?:⇹|↮|⊻|⊕|xor)_(boolean) IS std::logic::func::xor
-PRIORITY 21 (boolean)_(?:↔|xnor)_(boolean) IS std::logic::func::xnor
+PRIORITY 20 (boolean)_and_(boolean) IS std::logic::func::and
+PRIORITY 20 (boolean)_or_(boolean) IS std::logic::func::or
+PRIORITY 20 (boolean)_nand_(boolean) IS std::logic::func::nand
+PRIORITY 20 (boolean)_nor_(boolean) IS std::logic::func::nor
+PRIORITY 21 (boolean)_xor_(boolean) IS std::logic::func::xor
+PRIORITY 21 (boolean)_xnor_(boolean) IS std::logic::func::xnor
 
-PRIORITY 23 (?:∿|sin)_(number) IS std::math::func::sin
+PRIORITY 23 sin_(number) IS std::math::func::sin
 
 PRIORITY 24 (number)\.\.+(number) IS std::basic::func::range

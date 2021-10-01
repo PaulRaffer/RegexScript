@@ -7,4 +7,4 @@
 PRIORITY 25 print_(number) IS std::inout::func::print
 PRIORITY 25 print_String IS std::inout::func::print
 
-PRIORITY 24 String_<<_String IS std::inout::func::printf
+PRIORITY 24 String_<<_String IS std::inout::func::fprint

@@ -13,3 +13,6 @@
 [submodule "std/z80"]
 	path = std/z80
 	url = https://github.com/PaulRaffer/Z80-Assembler.git
+[submodule "build/regs-lib"]
+	path = build/regs-lib
+	url = https://gitlab.com/ComputerLanguages/RegexScript/lib/all.git

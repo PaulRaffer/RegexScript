@@ -154,15 +154,20 @@ auto main(int const argc, char const * const * const argv) -> int
 	//func.at(4).insert({ LR"(PRIORITY\s*(\d+)\s*(\S+)\s*IS\s*([^\n]+))", std_func_func }); //boost
 	//func.at(4).insert({ LR"(PRIORITY\s*(\d+)\s*(\S+)\s*IS\s*(std::\S+))", std_func_func_std }); //boost
 
+	func.at(4).insert({ raffer::to_basic_string<Char>("<LIB>"),
+		raffer::to_basic_string<Char>(argv[0]) + raffer::to_basic_string<Char>("-lib") });
+
 	func.at(5).insert({ raffer::to_basic_string<Char>("run\\s*\"([^\"]*)\""), std_func_run });
 	func.at(25).insert({ raffer::to_basic_string<Char>("print\\s*all"), std_basic_func_printall });
 	
-	for (auto i = 1; i < argc; ++i)
+
+	for (auto i = 1; i < argc; ++i) {
 		#ifdef DEBUG
-			raffer::basic_cout<Char> << "<<< " <<
+			raffer::basic_cout<Char> << raffer::to_basic_string<Char>("<<< ") <<
 		#endif // DEBUG
-		raffer::call<Char>(raffer::to_basic_string<Char>(R"(run ")") + raffer::to_basic_string<Char>(argv[i]) + raffer::to_basic_string<Char>(R"(")"), func, raffer::basic_smatch<Char>{});
-	
+		raffer::call<Char>(raffer::to_basic_string<Char>(R"(run "<LIB>/)") + raffer::to_basic_string<Char>(argv[i]) + raffer::to_basic_string<Char>(R"(")"), func, raffer::basic_smatch<Char>{});
+	}
+
 	#ifdef DEBUG
 		std_basic_func_printall(raffer::basic_smatch{});
 	#endif // DEBUG

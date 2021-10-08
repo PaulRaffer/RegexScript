@@ -18,29 +18,60 @@ The following tools need to be installed on your computer:
 - [raffer_cpplib](https://github.com/PaulRaffer/raffer_cpplib#installation)
 
 
-
 ### Clone
+
 Navigate to the directory where you want to install RegexScript
 clone this repository to your local machine:
 ```
-cd directory/where/you/want/to/install/RegexScript
+cd <RegexScript-path>
 git clone https://github.com/PaulRaffer/RegexScript.git
-cd RegexScript
+
 ```
 
+
+#### Submodules
+
+```
+cd RegexScript
+git submodule init
+git submodule update
+```
+
+
+### Config
+#### Linux
+```
+./config-debug-unix.sh
+```
+#### Windows
+```
+./config-debug-mingw.bat
+```
+
+
 ### Build
+```
+./build-static.sh.bat
+```
+
+
+### Make RegexScript executable from anywhere
+
+#### Linux
+Add a link to RegexScript to the directory ```/usr/local/bin/```:
+
+```
+sudo cp -s <RegexScript-path>/RegexScript/build/regs /usr/local/bin/regs
+```
 
 #### Windows
 
-```
-config-debug-mingw.bat
-build-static.sh.bat
-```
+TODO
 
 ## Run
 
 ```
-run.sh.bat
+regs std/core.regs
 ```
 
 ## License

@@ -1,1 +1,1 @@
-"./build/regs"
+./build/regs core/all.regs
